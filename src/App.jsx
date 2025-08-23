@@ -4,9 +4,9 @@ import { QRCodeCanvas } from "qrcode.react";
 function App() {
   const [text, setText] = useState("");
   return (
-    <div>
-      <h1>Hello world</h1>
-      <form>
+    <div className="container">
+ <div className="text-input">
+        <form>
         <label>input</label>
         <input
           type="text"
@@ -18,12 +18,17 @@ function App() {
           }}
         />
       </form>
-      <QRCodeCanvas
+    </div>
+      {/* qr code canvas */}
+     <div className="qr-canvas">
+       <QRCodeCanvas
         value={text}
-        size={200}
-        bgColor="#f0f8ff"
-        fgColor="#1e3a8a"
+        size={220}
+        bgColor="#ffffffff"
+        fgColor="#1e3b8aa8"
+        level="H" 
       ></QRCodeCanvas>
+     </div>
     </div>
   );
 }
