@@ -1,46 +1,65 @@
-import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
+import "./App.css";
+
 function App() {
-  const [text, setText] = useState("");
-  const [size, setSize] = useState(100);
+  const [inputText, setInputText] = useState("");
+  const [qrValue, setQrValue] = useState("");
+  const [size] = useState(200);
+  const [color] = useState("#000000");
+
+const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
+
+  const handleGenerateQR = () => {
+    if (inputText.trim() !== "") {
+      setQrValue(inputText);
+    }
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setQrValue(data.data.url); // use hosted image URL
+      }
+    } catch (error) {
+      console.error("Image upload failed:", error);
+    }
+  };
+
   return (
     <div className="container">
-      <div className="text-input">
-        <form>
-          <label>input</label>
-          {/* input */}
-          <input
-            type="text"
-            name="qir input"
-            placeholder="ie, text, url"
-            value={text}
-            onChange={(e) => {
-              setText(e.target.value);
-            }}
-          />
-          {/* size */}
-          <input
-            type="range"
-            min="10"
-            max="100"
-            value={size}
-            onChange={(e) => {
-              setSize(e.target.value);
-            }}
-          /><p>{size}</p>
-        </form>
+      <h2>QR Code Generator</h2>
+
+      <div className="inputs">
+        <input
+          type="text"
+          placeholder="Enter text or link"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
+        <button onClick={handleGenerateQR}>Generate QR</button>
       </div>
-      {/* qr code canvas */}
-      <div className="qr-canvas">
-        <QRCodeCanvas
-          value={text}
-          size={size*5}
-          bgColor="#ffffffff"
-          fgColor="#1e3b8aa8"
-          level="H"
-        ></QRCodeCanvas>
-      </div>
+
+      <p>OR upload an image</p>
+      <input type="file" accept="image/*" onChange={handleFileUpload} />
+
+      {qrValue && (
+        <div className="qr-canvas">
+          <QRCodeCanvas value={qrValue} size={size} fgColor={color} level="H" />
+        </div>
+      )}
     </div>
   );
 }
