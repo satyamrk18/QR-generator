@@ -14,6 +14,10 @@ const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key her
     if (inputText.trim() !== "") {
       setQrValue(inputText);
     }
+    if(inputText.trim() === "")
+    {
+      alert("please enter the text, link or anything !")
+    }
   };
 
   const handleFileUpload = async (e) => {
@@ -48,8 +52,16 @@ const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key her
           placeholder="Enter text or link"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          onKeyDown={(e)=>
+          {
+            if(e.key === "Enter")
+            {
+              handleGenerateQR();
+            }
+          }
+          }
         />
-        <button onClick={handleGenerateQR}>Generate QR</button>
+        <button onClick={handleGenerateQR} >Generate QR</button>
       </div>
 
       <p>OR upload an image</p>
