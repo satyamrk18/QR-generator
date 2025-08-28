@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [inputText, setInputText] = useState("");
   const [qrValue, setQrValue] = useState("");
-  const [size] = useState(200);
+  const [size, setSize] = useState(50);
   const [color] = useState("#000000");
 
   const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
@@ -83,12 +83,20 @@ function App() {
           capture="camera"
           onChange={handleFileUpload}
         />
+        <p>size of the qr code {size}</p>
+        <input
+        type="range"
+        onChange={(e)=>setSize(e.target.value)} 
+        min="10"
+        max="100"
+        />
+
       </div>
 
       {/* qr code */}
       <div className="qr-canvas">
         {qrValue && (
-          <QRCodeCanvas value={qrValue} size={size} fgColor={color} level="H" />
+          <QRCodeCanvas value={qrValue} size={size*5} fgColor={color} level="H" />
         )}
       </div>
     </div>
