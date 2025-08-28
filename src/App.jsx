@@ -65,8 +65,9 @@ const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key her
       </div>
 
       <p>OR upload an image</p>
-      <input type="file" accept="image/*" onChange={handleFileUpload} />
-
+      {/* file input */}
+      <input type="file" accept="image/*"   capture="camera" onChange={handleFileUpload} />
+{/* camera input */}
       {qrValue && (
         <div className="qr-canvas">
           <QRCodeCanvas value={qrValue} size={size} fgColor={color} level="H" />
