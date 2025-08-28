@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import "./App.css";
 
@@ -9,7 +9,9 @@ function App() {
   const [color] = useState("#000000");
 
   const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
-
+  useEffect(() => {
+    setQrValue("hii");
+  }, []);
   const handleGenerateQR = () => {
     if (inputText.trim() !== "") {
       setQrValue(inputText);
@@ -21,16 +23,15 @@ function App() {
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    if (!file) 
-      { //if uplads is empty, it will not run the next code to generate the qr code
-        return;
-      }
-if(file.size >= 5*1024*1024)
-{
-  //if the file size is
-  alert("the file size not bigger than 5MB");
-  return;
-}
+    if (!file) {
+      //if uplads is empty, it will not run the next code to generate the qr code
+      return;
+    }
+    if (file.size >= 5 * 1024 * 1024) {
+      //if the file size is
+      alert("the file size not bigger than 5MB");
+      return;
+    }
     const formData = new FormData();
     formData.append("image", file);
 
@@ -51,9 +52,8 @@ if(file.size >= 5*1024*1024)
 
   return (
     <div className="container">
-      <h2>QR Code Generator</h2>
-
       <div className="inputs">
+        <h2>QR Code Generator</h2>
         <input
           type="text"
           placeholder="Enter text or link"
@@ -66,31 +66,31 @@ if(file.size >= 5*1024*1024)
           }}
         />
         <button onClick={handleGenerateQR}>Generate QR</button>
+
+        <p>OR upload an image</p>
+        {/* file input */}
+        <input
+          type="file"
+          accept="all"
+          capture="camera"
+          onChange={handleFileUpload}
+        />
+        {/* camera input */}
+        <p>click picture to generate a qr</p>
+        <input
+          type="file"
+          accept="image/*"
+          capture="camera"
+          onChange={handleFileUpload}
+        />
       </div>
 
-      <p>OR upload an image</p>
-      {/* file input */}
-      <input
-        type="file"
-        accept="all"
-        capture="camera"
-        onChange={handleFileUpload}
-      />
-      {/* camera input */}
-      <p>click picture to generate a qr</p>
-      <input
-        type="file"
-        accept="image/*"
-        capture="camera"
-        onChange={handleFileUpload}
-      />
-
       {/* qr code */}
-      {qrValue && (
-        <div className="qr-canvas">
+      <div className="qr-canvas">
+        {qrValue && (
           <QRCodeCanvas value={qrValue} size={size} fgColor={color} level="H" />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
