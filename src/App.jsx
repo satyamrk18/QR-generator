@@ -21,8 +21,16 @@ function App() {
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    if (!file) return;
-
+    if (!file) 
+      { //if uplads is empty, it will not run the next code to generate the qr code
+        return;
+      }
+if(file.size >= 5*1024*1024)
+{
+  //if the file size is
+  alert("the file size not bigger than 5MB");
+  return;
+}
     const formData = new FormData();
     formData.append("image", file);
 
