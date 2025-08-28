@@ -54,4 +54,8 @@ input {
     flex-direction:column;
     width:90%;
   }
+  .inputs
+  {
+    padding:50px;
+  }
 }
