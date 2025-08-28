@@ -73,7 +73,6 @@ function App() {
         {/* file input */}
         <input
           type="file"
-          accept="all"
           onChange={handleFileUpload}
         />
         {/* camera input */}
@@ -91,7 +90,6 @@ function App() {
         min="10"
         max="100"
         />
-
       </div>
 
       {/* qr code */}
