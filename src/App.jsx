@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { QRCodeCanvas } from "qrcode.react";
+import Download from "./downloadBtn.jsx"
 import "./App.css";
 
 function App() {
@@ -49,7 +50,8 @@ function App() {
       console.error("Image upload failed:", error);
     }
   };
-
+  //download button referace
+ const captureRef = useRef(null);
   return (
     <div className="container">
       <div className="inputs">
@@ -94,10 +96,11 @@ function App() {
       </div>
 
       {/* qr code */}
-      <div className="qr-canvas">
+      <div className="qr-canvas" ref={captureRef}>
         {qrValue && (
           <QRCodeCanvas value={qrValue} size={size*5} fgColor={color} level="H" />
         )}
+        <Download targetRef={captureRef}/>
       </div>
     </div>
   );
