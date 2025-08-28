@@ -97,9 +97,11 @@ function App() {
 
       {/* qr code */}
       <div className="qr-canvas" ref={captureRef}>
-        {qrValue && (
+        <div className="qr-code">
+          {qrValue && (
           <QRCodeCanvas value={qrValue} size={size*5} fgColor={color} level="H" />
         )}
+        </div>
         <Download targetRef={captureRef}/>
       </div>
     </div>
