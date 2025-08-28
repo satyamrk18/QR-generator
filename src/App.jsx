@@ -74,7 +74,6 @@ function App() {
         <input
           type="file"
           accept="all"
-          capture="camera"
           onChange={handleFileUpload}
         />
         {/* camera input */}
