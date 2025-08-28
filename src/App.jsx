@@ -8,15 +8,14 @@ function App() {
   const [size] = useState(200);
   const [color] = useState("#000000");
 
-const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
+  const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
 
   const handleGenerateQR = () => {
     if (inputText.trim() !== "") {
       setQrValue(inputText);
     }
-    if(inputText.trim() === "")
-    {
-      alert("please enter the text, link or anything !")
+    if (inputText.trim() === "") {
+      alert("please enter the text, link or anything !");
     }
   };
 
@@ -52,22 +51,33 @@ const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key her
           placeholder="Enter text or link"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          onKeyDown={(e)=>
-          {
-            if(e.key === "Enter")
-            {
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
               handleGenerateQR();
             }
-          }
-          }
+          }}
         />
-        <button onClick={handleGenerateQR} >Generate QR</button>
+        <button onClick={handleGenerateQR}>Generate QR</button>
       </div>
 
       <p>OR upload an image</p>
       {/* file input */}
-      <input type="file" accept="image/*"   capture="camera" onChange={handleFileUpload} />
-{/* camera input */}
+      <input
+        type="file"
+        accept="all"
+        capture="camera"
+        onChange={handleFileUpload}
+      />
+      {/* camera input */}
+      <p>click picture to generate a qr</p>
+      <input
+        type="file"
+        accept="image/*"
+        capture="camera"
+        onChange={handleFileUpload}
+      />
+
+      {/* qr code */}
       {qrValue && (
         <div className="qr-canvas">
           <QRCodeCanvas value={qrValue} size={size} fgColor={color} level="H" />
