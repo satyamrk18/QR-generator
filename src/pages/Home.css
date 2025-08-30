@@ -1,11 +1,19 @@
 .container {
   width: 100%;
-  margin: 45px auto;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction:column;
   gap: 50px;
+}
+.main-container
+{
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  align-content:center;
+  justify-content:space-evenly;
 }
 form {
   display: flex;
@@ -49,10 +57,12 @@ input {
   border-radius: 10px;
 }
 @media (max-width:700px) {
-  .container
+  .main-container
   {
     flex-direction:column;
     width:90%;
+    height:auto;
+    gap:50px;
   }
   .inputs
   {

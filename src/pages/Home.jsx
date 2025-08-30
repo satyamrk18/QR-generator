@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./Home.css"
 import { QRCodeCanvas } from "qrcode.react";
 import Download from "../downloadBtn.jsx"
+import Navbar from "../components/navbar.jsx"
 const Home = () => {
   const [inputText, setInputText] = useState("");
   const [qrValue, setQrValue] = useState("");
@@ -53,7 +54,11 @@ const Home = () => {
   const captureRef = useRef(null);
   return (
     <div className="container">
-      <div className="inputs">
+     <div>
+       <Navbar />
+     </div>
+   <div className="main-container">
+       <div className="inputs">
         <h2>QR Code Generator</h2>
         <input
           type="text"
@@ -102,6 +107,7 @@ const Home = () => {
         </div>
         <Download targetRef={captureRef} />
       </div>
+   </div>
     </div>
   );
 };
