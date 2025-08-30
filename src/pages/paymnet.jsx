@@ -1,5 +1,7 @@
 import Navbar from "../components/navbar.jsx";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, useRef } from "react";
+import { QRCodeCanvas } from "qrcode.react";
+import Download from "../downloadBtn.jsx";
 import "./payment.css";
 const payment = () => {
   const [payeeName, setPayeeName] = useState("");
@@ -7,6 +9,24 @@ const payment = () => {
   const [amount, setAmount] = useState(0);
   const [note, setNote] = useState("");
   const [currency, setCurrency] = useState("INR");
+  const [qrValue, setQrValue] = useState("");
+  const [size, setSize] = useState(50);
+const[color, setColor] = useState("#000000");
+  //initial qr value
+  useEffect(() => {
+    setQrValue("hii");
+  }, []);
+
+  const handleGenerateQR = () => {
+    if (inputText.trim() !== "") {
+      setQrValue(inputText);
+    }
+    if (inputText.trim() === "") {
+      alert("please enter the text, link or anything !");
+    }
+  };
+  //download button referace
+  const captureRef = useRef(null);
   return (
     <div className="payments">
       <div>
@@ -14,16 +34,36 @@ const payment = () => {
       </div>
       <div className="main-container">
         <div className="inputs">
-            <label>payee name</label>
-          <input type="text" placeholder="payee name"/>
+          <label>payee name</label>
+          <input type="text" placeholder="payee name" />
           <label>upi id</label>
-          <input type="text" placeholder="upi id"/>
+          <input type="text" placeholder="upi id" />
           <label>amount</label>
-          <input type="number" placeholder="amount"/>
+          <input type="number" placeholder="amount" />
           <label>note</label>
-          <input type="text" placeholder="note"/>
+          <input type="text" placeholder="note" />
+          <label>size</label>
+          <input
+            type="range"
+            onChange={(e) => setSize(e.target.value)}
+            min="10"
+            max="100"
+          />
+          <button type="button" onClick={handleGenerateQR}></button>
         </div>
-        <div className="qr-canvas"></div>
+        <div className="qr-canvas" ref={captureRef}>
+          <div className="qr-code">
+            {qrValue && (
+              <QRCodeCanvas
+                value={qrValue}
+                size={size * 5}
+                fgColor={color}
+                level="H"
+              />
+            )}
+          </div>
+          <Download targetRef={captureRef} />
+        </div>
       </div>
     </div>
   );
