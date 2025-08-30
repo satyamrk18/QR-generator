@@ -14,7 +14,7 @@ const payment = () => {
 const[color, setColor] = useState("#000000");
   //initial qr value
   useEffect(() => {
-    setQrValue("hii");
+    setQrValue("https://github.com/satyamrk18");
   }, []);
 
   const handleGenerateQR = () => {

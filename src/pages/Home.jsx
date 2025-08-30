@@ -11,7 +11,7 @@ const Home = () => {
 
   const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
   useEffect(() => {
-    setQrValue("hii");
+    setQrValue("https://github.com/satyamrk18");
   }, []);
   const handleGenerateQR = () => {
     if (inputText.trim() !== "") {
