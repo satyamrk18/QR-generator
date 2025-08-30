@@ -1,18 +1,22 @@
-.navbar
-{
-    margin-top:50px;
-    width:fit-content;
-    padding:5px 20px;
-    display:flex;
-    align-content:center;
-    text-align:center;
-    justify-content:space-evenly;
-    gap:20px;
-    border:2px solid black;
-    border-radius:10px;
+.navbar {
+  margin-top: 50px;
+  width: fit-content;
+  padding: 5px 20px;
+  display: flex;
+  align-content: center;
+  text-align: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
 }
-.item
-{
-    text-decoration:none;
-    cursor:pointer;
+.item {
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+.activepage {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
 }
