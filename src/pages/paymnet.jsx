@@ -12,7 +12,7 @@ const payment = () => {
   const [currency, setCurrency] = useState("INR");
   const [qrValue, setQrValue] = useState("");
   const [size, setSize] = useState(50);
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("#000");
   //initial qr value
   useEffect(() => {
     setQrValue("https://github.com/satyamrk18");
