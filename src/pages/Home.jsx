@@ -94,8 +94,8 @@ const Home = () => {
       </div>
 
       {/* qr code */}
-      <div className="qr-canvas" ref={captureRef}>
-        <div className="qr-code">
+      <div className="qr-canvas" >
+        <div className="qr-code" ref={captureRef}>
           {qrValue && (
             <QRCodeCanvas
               value={qrValue}

@@ -2,6 +2,7 @@ import Navbar from "../components/navbar";
 import "./Map.css";
 import { QRCodeCanvas } from "qrcode.react";
 import { useState, useEffect, useRef } from "react";
+import Download from "../downloadBtn.jsx"
 const Map = () => {
   const [location, setLocation] = useState("");
   const [qrValue, setqrValue] = useState("");
@@ -18,7 +19,8 @@ const Map = () => {
     setqrValue(URL);
     setLocation("")
   };
-
+  //download button referace
+  const captureRef = useRef(null);
   return (
     <div className="container">
       <div>
@@ -47,7 +49,8 @@ const Map = () => {
             generate qr
           </button>
         </div>
-        <div className="qr-code">
+      <div className="qr-canvas" >
+        <div className="qr-code" ref={captureRef}>
           {qrValue && (
             <QRCodeCanvas
               value={qrValue}
@@ -57,6 +60,8 @@ const Map = () => {
             />
           )}
         </div>
+        <Download targetRef={captureRef} />
+      </div>
       </div>
     </div>
   );
