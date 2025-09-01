@@ -59,6 +59,21 @@ input {
   justify-content: center;
   flex-direction: column;
 }
+.edit-container
+{
+  width:fit-content;
+  height:auto;
+  border:2px solid black;
+  display:flex;
+  align-content:center;
+  justify-content:space-evenly;
+  padding:10px;
+}
+.edit 
+{
+  display:flex;
+  flex-direction:column;
+}
 @media (max-width: 700px) {
   .main-container {
     flex-direction: column;
