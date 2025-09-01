@@ -21,35 +21,6 @@ const Home = () => {
       alert("please enter the text, link or anything !");
     }
   };
-
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) {
-      //if uplads is empty, it will not run the next code to generate the qr code
-      return;
-    }
-    if (file.size >= 5 * 1024 * 1024) {
-      //if the file size is
-      alert("the file size not bigger than 5MB");
-      return;
-    }
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        setQrValue(data.data.url); // use hosted image URL
-      }
-    } catch (error) {
-      console.error("Image upload failed:", error);
-    }
-  };
   //download button referace
   const captureRef = useRef(null);
   return (
@@ -73,17 +44,6 @@ const Home = () => {
         />
         <button onClick={handleGenerateQR}>Generate QR</button>
 
-        <p>OR upload an image</p>
-        {/* file input */}
-        <input type="file" onChange={handleFileUpload} />
-        {/* camera input */}
-        <p>click picture to generate a qr</p>
-        <input
-          type="file"
-          accept="image/*"
-          capture="camera"
-          onChange={handleFileUpload}
-        />
         <p>size of the qr code {size}</p>
         <input
           type="range"
