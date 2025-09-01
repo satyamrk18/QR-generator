@@ -4,16 +4,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction:column;
+  flex-direction: column;
   gap: 50px;
 }
-.main-container
-{
-  width:100%;
-  display:flex;
-  flex-direction:row;
-  align-content:center;
-  justify-content:space-evenly;
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
 }
 form {
   display: flex;
@@ -34,7 +33,7 @@ input {
   flex-direction: column;
   gap: 10px;
   border: 2px solid black;
-  padding:50px;
+  padding: 50px;
   height: auto;
   border-radius: 10px;
 }
@@ -48,24 +47,26 @@ input {
   flex-direction: column;
   width: fit-content;
   background-color: white;
-   gap:15px;
+  gap: 15px;
 }
 .qr-code {
   background-color: white;
   border: 2px solid black;
   padding: 15px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-@media (max-width:700px) {
-  .main-container
-  {
-    flex-direction:column;
-    width:90%;
-    height:auto;
-    gap:50px;
+@media (max-width: 700px) {
+  .main-container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    gap: 50px;
   }
-  .inputs
-  {
-    padding:50px;
+  .inputs {
+    padding: 50px;
   }
 }

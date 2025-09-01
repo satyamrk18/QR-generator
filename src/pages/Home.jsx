@@ -3,12 +3,13 @@ import "./Home.css"
 import { QRCodeCanvas } from "qrcode.react";
 import Download from "../downloadBtn.jsx"
 import Navbar from "../components/navbar.jsx"
+import Note from "../components/note.jsx";
 const Home = () => {
   const [inputText, setInputText] = useState("");
   const [qrValue, setQrValue] = useState("");
   const [size, setSize] = useState(50);
   const [color] = useState("#000000");
-
+const [note, setNote] = useState("");
 
   useEffect(() => {
     setQrValue("https://github.com/satyamrk18");
@@ -64,9 +65,14 @@ const Home = () => {
               level="H"
             />
           )}
+          <Note noteValue={note}/>
         </div>
         <Download targetRef={captureRef} />
       </div>
+   </div>
+   <div className="edits">
+    <lavel>add note</lavel>
+<input type="text" placeholder="enter a note" onChange={(e)=>{setNote(e.target.value)}}/>
    </div>
     </div>
   );
