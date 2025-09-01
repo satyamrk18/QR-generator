@@ -9,7 +9,7 @@ const Home = () => {
   const [size, setSize] = useState(50);
   const [color] = useState("#000000");
 
-  const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
+
   useEffect(() => {
     setQrValue("https://github.com/satyamrk18");
   }, []);

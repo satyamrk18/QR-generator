@@ -7,6 +7,12 @@ const image = () => {
   const [qrValue, setQrValue] = useState("");
   const [size, setSize] = useState(50);
   const [color] = useState("#000000");
+useEffect(()=>
+{
+setQrValue("https://github.com/satyamrk18");
+},[])
+
+  const apiKey = import.meta.env.VITE_IMGBB_API_KEY; // Put your ImgBB API key here
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) {
@@ -56,7 +62,12 @@ const image = () => {
             onChange={handleFileUpload}
           />
           <p>size</p>
-          <input type="range" onChange={(e)=>{setSize(e.target.value)}}/>
+          <input
+            type="range"
+            onChange={(e) => {
+              setSize(e.target.value);
+            }}
+          />
         </div>
         {/* qr code */}
         <div className="qr-canvas">
