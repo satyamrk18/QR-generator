@@ -19,17 +19,27 @@ const Map = () => {
         <Navbar />
       </div>
       <div className="main-container">
-        <h1>Map</h1>
-        <input
-          type="text"
-          onChange={(e) => {
-            setLocation(e.target.value);
-          }}
-        />
-        <input type="range" onChange={(e)=>{setSize(e.target.value)}}/>
-        <button type="button" onClick={handlegenrateqr}>
-          generate qr
-        </button>
+        {" "}
+        <div className="form">
+          <h1>Map</h1>
+          <label>enter location</label>
+          <input
+            type="text"
+            placeholder="enter a location"
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          />
+          <input
+            type="range"
+            onChange={(e) => {
+              setSize(e.target.value);
+            }}
+          />
+          <button type="button" onClick={handlegenrateqr}>
+            generate qr
+          </button>
+        </div>
         <div className="qr-code">
           {qrValue && (
             <QRCodeCanvas
