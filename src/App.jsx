@@ -3,6 +3,7 @@ import Home from "./pages/Home.jsx"
 import Payment from "./pages/paymnet.jsx"
 import Map from "./pages/Map.jsx"
 import Image from "./pages/images.jsx"
+import SocialMedia from "./pages/socialmedia.jsx"
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/payment" element={<Payment />}></Route>
       <Route path="/map" element={<Map />}></Route>
       <Route path="/image" element={<Image />}></Route>
+      <Route  path="/socialmedia" element={<SocialMedia />}></Route>
       <Route path="*" element={<h1>error 404 page not fount</h1>}></Route>
     </Routes>
     </BrowserRouter>
