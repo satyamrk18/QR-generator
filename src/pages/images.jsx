@@ -51,6 +51,7 @@ setQrValue("https://github.com/satyamrk18");
       </div>
       <div className="main-container">
         <div className="inputs">
+        <h2>Image/Pdf to qr code</h2>
           {/* file input */}
           <input type="file" onChange={handleFileUpload} />
           {/* camera input */}

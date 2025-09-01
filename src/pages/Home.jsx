@@ -30,7 +30,7 @@ const Home = () => {
      </div>
    <div className="main-container">
        <div className="inputs">
-        <h2>QR Code Generator</h2>
+        <h2>Text/Link to qr code</h2>
         <input
           type="text"
           placeholder="Enter text or link"
