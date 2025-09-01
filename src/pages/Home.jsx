@@ -12,7 +12,7 @@ const Home = () => {
   //note edits
   const [note, setNote] = useState("scan me");
   const [noteSize, setNoteSize] = useState(20);
-
+  const [boldness, setBoldness] = useState(30);
   useEffect(() => {
     setQrValue("https://github.com/satyamrk18");
   }, []);
@@ -22,7 +22,7 @@ const Home = () => {
       alert("please enter a note first.");
       setNoteSize(20);
     }
-  }, [noteSize]);
+  }, [noteSize, boldness]);
 
   const handleGenerateQR = () => {
     if (inputText.trim() !== "") {
@@ -75,7 +75,7 @@ const Home = () => {
                 level="H"
               />
             )}
-            <Note noteValue={note} fontSize={noteSize} />
+            <Note noteValue={note} fontSize={noteSize} bold={boldness *10}/>
           </div>
           <Download targetRef={captureRef} />
         </div>
@@ -98,6 +98,15 @@ const Home = () => {
             max="100"
             onChange={(e) => {
               setNoteSize(e.target.value);
+            }}
+          />
+          <label>note Boldness</label>
+          <input
+            type="range"
+            min="30"
+            max="100"
+            onChange={(e) => {
+              setBoldness(e.target.value);
             }}
           />
         </div>
