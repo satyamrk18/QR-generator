@@ -29,7 +29,7 @@ const Map = () => {
       <div className="main-container">
         {" "}
         <div className="form">
-          <h1>Map</h1>
+          <h1>Map qr</h1>
           <label>enter location</label>
           <input
             type="text"

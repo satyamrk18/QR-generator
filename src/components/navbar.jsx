@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/" className={location.pathname == "/"? "activepage" : "item"}>Home</Link>
-        <Link to= "/image" className={location.pathname=="/image"?"activepage":"item"}>image</Link>
+        <Link to= "/image" className={location.pathname=="/image"?"activepage":"item"}>image/file</Link>
       <Link to="/payment" className={location.pathname=="/payment" ? "activepage" : "item"}>Payment</Link>
       <Link to= "/map" className={location.pathname=="/map"?"activepage":"item"}>Map</Link>
     </div>
