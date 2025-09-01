@@ -13,6 +13,7 @@ const Home = () => {
   const [note, setNote] = useState("scan me");
   const [noteSize, setNoteSize] = useState(20);
   const [boldness, setBoldness] = useState(30);
+  const [noteColor, setNoteColor] = useState("#000");
   useEffect(() => {
     setQrValue("https://github.com/satyamrk18");
   }, []);
@@ -75,7 +76,12 @@ const Home = () => {
                 level="H"
               />
             )}
-            <Note noteValue={note} fontSize={noteSize} bold={boldness *10}/>
+            <Note
+              noteValue={note}
+              fontSize={noteSize}
+              bold={boldness * 10}
+              color={noteColor}
+            />
           </div>
           <Download targetRef={captureRef} />
         </div>
@@ -107,6 +113,13 @@ const Home = () => {
             max="100"
             onChange={(e) => {
               setBoldness(e.target.value);
+            }}
+          />
+          <label>note color</label>
+          <input
+            type="color"
+            onChange={(e) => {
+              setNoteColor(e.target.value);
             }}
           />
         </div>

@@ -1,8 +1,15 @@
 import "./note.css";
-const note = ({ noteValue, fontSize,bold, onChange }) => {
+const note = ({ noteValue, fontSize, bold, color, onChange }) => {
   return (
     <div>
-      <p style={{ fontSize: `${fontSize}px`,fontWeight:`${bold}` }} onChange={onChange}>
+      <p
+        style={{
+          fontSize: `${fontSize}px`,
+          fontWeight: `${bold}`,
+          color: `${color}`,
+        }}
+        onChange={onChange}
+      >
         {noteValue}
       </p>
     </div>
