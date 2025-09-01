@@ -7,10 +7,16 @@ const Map = () => {
   const [qrValue, setqrValue] = useState("");
   const [size, setSize] = useState(50);
   const [color, setColor] = useState("#000");
+
+  useEffect(() => {
+    setqrValue("https://github.com/satyamrk18");
+  }, []);
+
   const handlegenrateqr = () => {
     setLocation(location);
     const URL = `https://www.google.com/maps/search/?api=1&query=${location}`;
     setqrValue(URL);
+    setLocation("")
   };
 
   return (
@@ -26,6 +32,7 @@ const Map = () => {
           <input
             type="text"
             placeholder="enter a location"
+            value={location}
             onChange={(e) => {
               setLocation(e.target.value);
             }}
