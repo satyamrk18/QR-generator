@@ -1,18 +1,13 @@
 import "./socialmedia.css";
 import { useState, useEffect, useRef } from "react";
-import instalogo from "../assets/images/instalogo.png";
+import data from "../data/socialmediadata.js"
 const socialmedia = () => {
-  const data = [
-    {
-      name: "instagram",
-      logo: instalogo,
-    },
-  ];
+ 
   return (
     <div className="tag-container">
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
-          <div className="tag">
+          <div className="tag" key={item.id}>
             <img src={item.logo} alt="logo" />
             <h4>{item.name}</h4>
           </div>
